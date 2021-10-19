@@ -1,0 +1,18 @@
+刚更新代码获取报错，百度查了好久，终于找到解决方法了
+OpenSSL SSL_read: Connection was reset, errno 10054
+
+解决方法：
+
+先是解决：（注意最后那个是数字1）
+用压缩的方式进行下载：git config --global --add core.compression -1
+增大缓存大小：git config --global http.postBuffer 524288000
+安全设置问题：git config http.sslVerify “false”
+
+继续操作：
+git config --global http.sslBackend “openssl”
+git config --global http.sslCAInfo [path to .pem file]
+
+完美解决
+————————————————
+版权声明：本文为CSDN博主「xiaobudong_007」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xiaobudong_007/article/details/115113066
